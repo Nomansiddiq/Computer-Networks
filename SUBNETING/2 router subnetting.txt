@@ -1,0 +1,99 @@
+Step 1 : write the given ip 
+		197.10.10.0
+                // In this host part is not given  
+
+
+Step 2 : Write subnet mask 
+		Binary : 11111111.11111111.11111111.00000000
+		DEcimal: 255.255.255.0 
+
+
+
+Step 3: Find n=?
+ 		n=(Host / Network)  //wrt host
+		n=5(max pcs conneted are 25 .. we have to search for (2^n)-2 >= 25 i-e n=5=> 30)
+		2^3=8(8 subnet will be created)   //
+
+
+
+Step 4: Write Updated Subnet mask
+		pre: 	       11111111.11111111.11111111.00000000
+		updated Binary:11111111.11111111.11111111.1   1   1 00000(update to 0 to 1 according to n value)
+					           	  2^7 2^6 2^5......2^0
+						          128+64+32=224
+		
+		updated subnet mask : 255.255.255.224
+
+
+
+
+
+Step 5: Find All subnet mask
+
+		//Start ip is called the network ip and the last one is called broadcast ip
+        	
+		                               SUBNET MASK 1:
+		Network  :197.10.10.0
+                    =>
+		Broadcast:197.10.10.31    	//(64 is from first Non zero of updated binary in this case :2^5=(32)-1)
+		
+		Usable ip(30): 197.10.10.1 
+				=>
+			       197.10.10.30	
+		
+		Subnet mask:255.255.255.224
+
+ 						SUBNET MASK 2:
+
+		Network  :197.10.10.32
+		             ->
+		broadcast:192.168.10.63		(add 31 to the network ip last part i-e 32+31=63)
+
+		Usable ip(30):197.10.10.33	(30+3 //previous usable ip last part)
+				=>
+			      197.10.10.62	
+		
+		Subnet mask:255.255.255.224
+
+
+		
+
+						Subnet Mask 3:
+		Network  :197.10.10.64
+		             ->
+		broadcast:197.10.10.95		(add 31 to the network ip last part i-e 64+31=)
+
+		Usable ip(30): 192.168.10.65       (62+3=65)
+				=>
+			   192.168.10.94	
+		
+		Subnet mask:255.255.255.224
+				
+
+	
+						Subnet Mask 4:
+		Network  :197.10.10.96    
+		             ->
+		broadcast:197.10.10.127		(add 31 to the network ip last part i-e 31+96=127)
+
+		Usable ip(30): 197.10.10.97	(94+3=97) 
+				=>
+			   192.168.10.126	
+		
+		Subnet mask:255.255.255.224
+
+	
+
+
+
+
+						Subnet Mask 5:
+		Network  :197.10.10.128    
+		             ->
+		broadcast:197.10.10.159		(add 31 to the network ip last part i-e 31+128=159)
+
+		Usable ip(30): 197.10.10.100	(97+3=100) 
+				=>
+			   192.168.10.130	
+		
+		Subnet mask:255.255.255.224
